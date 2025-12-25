@@ -17,6 +17,9 @@
     <!-- Header -->
     <header class="header">
         <div class="header-left">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleSidebar()">
+                <i data-lucide="menu"></i>
+            </button>
             <div class="logo">
                 <span class="logo-icon"><i data-lucide="calendar-check"></i></span>
                 <span class="logo-text">DevSync</span>
@@ -47,8 +50,10 @@
 
     <!-- Main Container -->
     <div class="container">
+        <!-- Sidebar Overlay (for mobile) -->
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <nav class="sidebar-nav">
                 <a href="#" class="nav-item active" data-view="dashboard">
                     <span class="nav-icon"><i data-lucide="layout-dashboard"></i></span>

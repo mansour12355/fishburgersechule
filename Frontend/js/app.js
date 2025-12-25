@@ -128,6 +128,28 @@ function logout() {
     window.location.href = 'login.html';
 }
 
+// Toggle sidebar for mobile
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('show');
+}
+
+// Close sidebar when clicking a nav item (mobile)
+function closeSidebarOnNav() {
+    if (window.innerWidth <= 992) {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        sidebar.classList.remove('open');
+        overlay.classList.remove('show');
+    }
+}
+
+// Make toggleSidebar available globally
+window.toggleSidebar = toggleSidebar;
+
 // ===================================
 // Role Display (No Switching)
 // ===================================
@@ -200,6 +222,9 @@ function initNavigation() {
 
 function switchView(view) {
     currentView = view;
+
+    // Close sidebar on mobile when navigating
+    closeSidebarOnNav();
 
     // Update navigation
     document.querySelectorAll('.nav-item').forEach(item => {
