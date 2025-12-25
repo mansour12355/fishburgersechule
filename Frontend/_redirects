@@ -1,0 +1,6 @@
+# Redirect all requests to index.html for SPA
+/*    /index.html   200
+
+# Serve login.html
+/login    /login.html   200
+/login.html    /login.html   200

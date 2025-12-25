@@ -126,6 +126,32 @@ function subscribeToActivities(callback) {
     });
 }
 
+// Reset all data - clears all collections
+async function resetAllData() {
+    try {
+        // Delete all tasks
+        const tasksSnapshot = await getDocs(tasksCollection);
+        const taskDeletePromises = tasksSnapshot.docs.map(doc => deleteDoc(doc.ref));
+        await Promise.all(taskDeletePromises);
+
+        // Delete all messages
+        const messagesSnapshot = await getDocs(messagesCollection);
+        const messageDeletePromises = messagesSnapshot.docs.map(doc => deleteDoc(doc.ref));
+        await Promise.all(messageDeletePromises);
+
+        // Delete all activities
+        const activitiesSnapshot = await getDocs(activitiesCollection);
+        const activityDeletePromises = activitiesSnapshot.docs.map(doc => deleteDoc(doc.ref));
+        await Promise.all(activityDeletePromises);
+
+        console.log('✅ All data has been reset');
+        return true;
+    } catch (error) {
+        console.error('Error resetting data:', error);
+        return false;
+    }
+}
+
 // Export for use in app.js
 export {
     db,
@@ -139,5 +165,6 @@ export {
     addActivity,
     subscribeToTasks,
     subscribeToMessages,
-    subscribeToActivities
+    subscribeToActivities,
+    resetAllData
 };
