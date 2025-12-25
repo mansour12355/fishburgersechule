@@ -2,12 +2,23 @@
   publish = "Frontend"
   command = "echo 'No build required'"
 
+# Make login the default landing page
+[[redirects]]
+  from = "/"
+  to = "/login.html"
+  status = 200
+
 [[redirects]]
   from = "/login"
   to = "/login.html"
   status = 200
 
 [[redirects]]
-  from = "/*"
+  from = "/dashboard"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/index"
   to = "/index.html"
   status = 200
